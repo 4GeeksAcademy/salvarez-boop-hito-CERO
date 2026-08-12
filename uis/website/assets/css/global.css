@@ -1,0 +1,78 @@
+/* ==============================================================
+   global.css — TrackFlow
+   ==============================================================
+   Este archivo es para:
+     1. Variables CSS (paleta de colores, tipografía, espaciados)
+     2. Animaciones y keyframes
+     3. Overrides de Tailwind cuando sea necesario
+     4. Estilos globales que no se manejan con utilidades
+   ============================================================== */
+
+/* ─── 1. Variables CSS ───────────────────────────────────────── */
+:root {
+  /* Colores primarios */
+  --color-azul: #002868;
+  --color-oro: #FFC400;
+  --color-rojo: #C60B1E;
+  --color-azul-texto: #1B2A4A;
+  --color-gris-fondo: #F8F9FA;
+
+  /* Gradientes del slogan */
+  --grad-oro: linear-gradient(to bottom, #FFE44D, #FFC400);
+  --grad-naranja: linear-gradient(to bottom, #FFB347, #FF8F00);
+  --grad-rojo: linear-gradient(to bottom, #FF4444, #C60B1E);
+
+  /* Tipografía */
+  --font-sans: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+
+  /* Transiciones */
+  --transition-base: 200ms ease;
+  --transition-slow: 300ms ease;
+}
+
+/* ─── 2. Animaciones ─────────────────────────────────────────── */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 8px rgba(255, 196, 0, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 16px rgba(255, 196, 0, 0.8);
+  }
+}
+
+/* ─── 3. Overrides de Tailwind ───────────────────────────────── */
+/* Solo cuando las utilidades no sean suficientes */
+
+/* ─── 4. Estilos globales ────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Focus visible para accesibilidad */
+*:focus-visible {
+  outline: 2px solid var(--color-oro);
+  outline-offset: 2px;
+}
+
+/* Selection */
+::selection {
+  background-color: var(--color-oro);
+  color: var(--color-azul);
+}
