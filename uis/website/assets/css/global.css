@@ -54,6 +54,19 @@
 /* ─── 3. Overrides de Tailwind ───────────────────────────────── */
 /* Solo cuando las utilidades no sean suficientes */
 
+/* Colores destacados para títulos (usar con data-i18n separado) */
+.title-highlight {
+  color: var(--color-oro);
+}
+
+.title-accent {
+  color: var(--color-rojo);
+}
+
+.title-white {
+  color: #ffffff;
+}
+
 /* ─── 4. Estilos globales ────────────────────────────────────── */
 html {
   scroll-behavior: smooth;

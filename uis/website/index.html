@@ -66,6 +66,9 @@
 
   <!-- Tailwind CSS v4 via CDN -->
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+  <!-- Global CSS -->
+  <link rel="stylesheet" href="assets/css/global.css">
 </head>
 <body class="font-sans text-[#1B2A4A] bg-white">
 
@@ -80,22 +83,201 @@
   <div id="hero-container"></div>
 
   <!-- ============================================================ -->
-  <!-- COMPONENT LOADER                                             -->
+  <!-- ABOUT / SERVICIOS + COBERTURA + BENEFICIOS                   -->
+  <!-- ============================================================ -->
+  <div id="about-container"></div>
+
+  <!-- ============================================================ -->
+  <!-- COMPONENT LOADER + LOGICA GLOBAL                             -->
   <!-- ============================================================ -->
   <script>
+    // ---- Traducciones multiidioma ----
+    var translations = {
+      es: {
+        'nav.home': 'Inicio',
+        'nav.services': 'Servicios',
+        'nav.coverage': 'Cobertura',
+        'nav.contact': 'Contacto',
+        'hero.experience': '+15 Años de Experiencia',
+        'hero.title.prefix': 'Logística que escala',
+        'hero.title.lead': 'con tu',
+        'hero.title.highlight': 'e-commerce',
+        'hero.subtitle': 'Gestión de almacenes, entregas de última milla y logística inversa en Estados Unidos y España. Más de 15 años ayudando a marcas de moda, electrónica y cosmética a crecer sin preocuparse por la operación.',
+        'hero.cta': 'Solicitar Información',
+        'hero.trust': 'Sin compromiso · Respuesta en 24-48h',
+        'services.tag': 'Nuestros Servicios',
+        'services.title.prefix': 'Soluciones logísticas',
+        'services.title.lead': 'integrales para tu',
+        'services.title.highlight': 'e-commerce',
+        'services.subtitle': 'Desde la recepción de tu mercancía hasta la entrega al cliente final, gestionamos cada paso con tecnología y experiencia.',
+        'services.almacenes.title': 'Gestión de Almacenes',
+        'services.almacenes.item1': 'Almacenamiento, picking y packing',
+        'services.almacenes.item2': 'Inventario en tiempo real',
+        'services.almacenes.item3': 'Operamos almacenes en Los Ángeles y Zaragoza',
+        'services.ultimamilla.title': 'Entregas de Última Milla',
+        'services.ultimamilla.item1': 'Red de carriers certificados en ambos países',
+        'services.ultimamilla.item2': 'Seguimiento unificado de envíos',
+        'services.ultimamilla.item3': 'Gestión de incidencias y devoluciones',
+        'services.inversa.title': 'Logística Inversa',
+        'services.inversa.item1': 'Gestión completa de devoluciones',
+        'services.inversa.item2': 'Inspección y reacondicionamiento',
+        'services.inversa.item3': 'Integración con tu plataforma de ventas',
+        'coverage.tag': 'Cobertura',
+        'coverage.title.prefix': 'Presencia en',
+        'coverage.title.highlight': 'dos continentes',
+        'coverage.subtitle': 'Infraestructura propia en Estados Unidos y España para que tu negocio crezca sin fronteras.',
+        'coverage.usa.title': 'Estados Unidos',
+        'coverage.usa.warehouse': 'Almacén en Los Ángeles',
+        'coverage.usa.national': 'Cobertura nacional',
+        'coverage.usa.carriers': 'Carriers: UPS, FedEx, DHL',
+        'coverage.es.title': 'España',
+        'coverage.es.warehouse': 'Almacén en Zaragoza',
+        'coverage.es.peninsular': 'Cobertura peninsular e islas',
+        'coverage.es.carriers': 'Carriers: MRW, SEUR, DHL',
+        'benefits.tag': '¿Por qué TrackFlow?',
+        'benefits.title.prefix': 'El socio logístico',
+        'benefits.title.lead': 'que tu',
+        'benefits.title.highlight': 'e-commerce',
+        'benefits.title.suffix': 'merece',
+        'benefits.binational.title': 'Operación Binacional',
+        'benefits.binational.desc': 'El único operador logístico con infraestructura propia en Estados Unidos y España. Un solo proveedor, dos mercados.',
+        'benefits.team.title': '+130 Profesionales',
+        'benefits.team.desc': 'Un equipo de más de 130 personas dedicadas a tu logística, con experiencia en moda, electrónica y cosmética.',
+        'benefits.tech.title': 'Tecnología Propia',
+        'benefits.tech.desc': 'Plataforma con visibilidad total de tu inventario, tracking de envíos en tiempo real e integración con tu e-commerce.',
+        'benefits.specialization.title': 'Especialización E-commerce',
+        'benefits.specialization.desc': 'Más de 15 años operando exclusivamente para marcas de moda, electrónica y cosmética que venden online.'
+      },
+      en: {
+        'nav.home': 'Home',
+        'nav.services': 'Services',
+        'nav.coverage': 'Coverage',
+        'nav.contact': 'Contact',
+        'hero.experience': '+15 Years of Experience',
+        'hero.title.prefix': 'Logistics that scales',
+        'hero.title.lead': 'with your',
+        'hero.title.highlight': 'e-commerce',
+        'hero.subtitle': 'Warehouse management, last-mile delivery, and reverse logistics in the United States and Spain. Over 15 years helping fashion, electronics, and cosmetics brands grow without worrying about operations.',
+        'hero.cta': 'Request Information',
+        'hero.trust': 'No commitment · Response in 24-48h',
+        'services.tag': 'Our Services',
+        'services.title.prefix': 'Integrated logistics',
+        'services.title.lead': 'solutions for your',
+        'services.title.highlight': 'e-commerce',
+        'services.subtitle': 'From receiving your merchandise to final customer delivery, we manage every step with technology and expertise.',
+        'services.almacenes.title': 'Warehouse Management',
+        'services.almacenes.item1': 'Storage, picking and packing',
+        'services.almacenes.item2': 'Real-time inventory',
+        'services.almacenes.item3': 'We operate warehouses in Los Angeles and Zaragoza',
+        'services.ultimamilla.title': 'Last-Mile Delivery',
+        'services.ultimamilla.item1': 'Certified carrier network in both countries',
+        'services.ultimamilla.item2': 'Unified shipment tracking',
+        'services.ultimamilla.item3': 'Incident and return management',
+        'services.inversa.title': 'Reverse Logistics',
+        'services.inversa.item1': 'Complete return management',
+        'services.inversa.item2': 'Inspection and refurbishment',
+        'services.inversa.item3': 'Integration with your sales platform',
+        'coverage.tag': 'Coverage',
+        'coverage.title.prefix': 'Presence on',
+        'coverage.title.highlight': 'two continents',
+        'coverage.subtitle': 'Own infrastructure in the United States and Spain so your business can grow without borders.',
+        'coverage.usa.title': 'United States',
+        'coverage.usa.warehouse': 'Los Angeles warehouse',
+        'coverage.usa.national': 'Nationwide coverage',
+        'coverage.usa.carriers': 'Carriers: UPS, FedEx, DHL',
+        'coverage.es.title': 'Spain',
+        'coverage.es.warehouse': 'Zaragoza warehouse',
+        'coverage.es.peninsular': 'Mainland and island coverage',
+        'coverage.es.carriers': 'Carriers: MRW, SEUR, DHL',
+        'benefits.tag': 'Why TrackFlow?',
+        'benefits.title.prefix': 'The logistics partner',
+        'benefits.title.lead': 'that your',
+        'benefits.title.highlight': 'e-commerce',
+        'benefits.title.suffix': 'deserves',
+        'benefits.binational.title': 'Binational Operation',
+        'benefits.binational.desc': 'The only logistics provider with own infrastructure in the United States and Spain. One provider, two markets.',
+        'benefits.team.title': '+130 Professionals',
+        'benefits.team.desc': 'A team of over 130 people dedicated to your logistics, with expertise in fashion, electronics, and cosmetics.',
+        'benefits.tech.title': 'Proprietary Technology',
+        'benefits.tech.desc': 'Platform with full inventory visibility, real-time shipment tracking and e-commerce integration.',
+        'benefits.specialization.title': 'E-commerce Specialization',
+        'benefits.specialization.desc': 'Over 15 years operating exclusively for fashion, electronics, and cosmetics brands that sell online.'
+      }
+    };
+
+    var currentLang = 'es';
+
+    function applyLanguage(lang) {
+      currentLang = lang;
+      document.documentElement.setAttribute('lang', lang === 'es' ? 'es' : 'en');
+      document.documentElement.setAttribute('data-lang', lang);
+
+      var elements = document.querySelectorAll('[data-i18n]');
+      for (var i = 0; i < elements.length; i++) {
+        var el = elements[i];
+        var key = el.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+          el.textContent = translations[lang][key];
+        }
+      }
+
+      // Actualizar botones de toggle
+      var toggleDesktop = document.getElementById('langToggle');
+      var toggleMobile = document.getElementById('langToggleMobile');
+      if (lang === 'es') {
+        toggleDesktop.textContent = 'EN';
+        toggleDesktop.setAttribute('aria-label', 'Cambiar idioma a inglés');
+        toggleMobile.textContent = 'English';
+        toggleMobile.setAttribute('aria-label', 'Cambiar idioma a inglés');
+      } else {
+        toggleDesktop.textContent = 'ES';
+        toggleDesktop.setAttribute('aria-label', 'Cambiar idioma a español');
+        toggleMobile.textContent = 'Español';
+        toggleMobile.setAttribute('aria-label', 'Cambiar idioma a español');
+      }
+    }
+
+    // ---- Carga de componentes ----
     function loadComponent(id, url) {
       fetch(url)
         .then(function(r) { return r.text(); })
         .then(function(html) {
           document.getElementById(id).innerHTML = html;
+          // Después de inyectar, re-aplicar idioma actual
+          applyLanguage(currentLang);
         })
         .catch(function(err) {
           console.error('Error cargando ' + url + ':', err);
         });
     }
 
+    // ---- Event delegation para botones toggle (funciona aunque se inyecten después) ----
+    document.addEventListener('click', function(e) {
+      var target = e.target;
+      if (target.id === 'langToggle' || target.id === 'langToggleMobile') {
+        applyLanguage(currentLang === 'es' ? 'en' : 'es');
+      }
+      // Menú hamburguesa
+      if (target.id === 'menuToggle') {
+        var menu = document.getElementById('mobileMenu');
+        if (menu) {
+          var expanded = target.getAttribute('aria-expanded') === 'true';
+          target.setAttribute('aria-expanded', String(!expanded));
+          menu.classList.toggle('hidden');
+        }
+      }
+      // Cerrar menú al hacer clic en enlaces
+      if (target.closest && target.closest('#mobileMenu a')) {
+        var menuToggle = document.getElementById('menuToggle');
+        var mobileMenu = document.getElementById('mobileMenu');
+        if (mobileMenu) mobileMenu.classList.add('hidden');
+        if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+
     loadComponent('navbar-container', 'components/navbar.html');
     loadComponent('hero-container', 'components/hero.html');
+    loadComponent('about-container', 'components/about.html');
   </script>
 </body>
 </html>
