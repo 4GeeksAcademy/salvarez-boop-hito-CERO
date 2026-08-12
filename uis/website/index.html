@@ -254,11 +254,42 @@
 
     var currentLang = 'es';
 
+    // Claves de título y descripción para traducción dinámica
+    var pageMeta = {
+      es: {
+        title: 'TrackFlow — Velocidad con Destino',
+        ogTitle: 'TrackFlow — Logística que escala con tu e-commerce',
+        ogDesc: 'Gestión de almacenes, entregas de última milla y logística inversa en Estados Unidos y España.',
+        twitterTitle: 'TrackFlow — Logística que escala con tu e-commerce',
+        twitterDesc: 'Gestión de almacenes, entregas de última milla y logística inversa en Estados Unidos y España.'
+      },
+      en: {
+        title: 'TrackFlow — Speed with Purpose',
+        ogTitle: 'TrackFlow — Logistics that scales with your e-commerce',
+        ogDesc: 'Warehouse management, last-mile delivery, and reverse logistics in the United States and Spain.',
+        twitterTitle: 'TrackFlow — Logistics that scales with your e-commerce',
+        twitterDesc: 'Warehouse management, last-mile delivery, and reverse logistics in the United States and Spain.'
+      }
+    };
+
     function applyLanguage(lang) {
       currentLang = lang;
+      localStorage.setItem('trackflow-lang', lang);
       document.documentElement.setAttribute('lang', lang === 'es' ? 'es' : 'en');
       document.documentElement.setAttribute('data-lang', lang);
 
+      // Traducir title y meta tags
+      document.title = pageMeta[lang].title;
+      var ogTitle = document.querySelector('meta[property="og:title"]');
+      var ogDesc = document.querySelector('meta[property="og:description"]');
+      var twTitle = document.querySelector('meta[name="twitter:title"]');
+      var twDesc = document.querySelector('meta[name="twitter:description"]');
+      if (ogTitle) ogTitle.setAttribute('content', pageMeta[lang].ogTitle);
+      if (ogDesc) ogDesc.setAttribute('content', pageMeta[lang].ogDesc);
+      if (twTitle) twTitle.setAttribute('content', pageMeta[lang].twitterTitle);
+      if (twDesc) twDesc.setAttribute('content', pageMeta[lang].twitterDesc);
+
+      // Traducir elementos data-i18n
       var elements = document.querySelectorAll('[data-i18n]');
       for (var i = 0; i < elements.length; i++) {
         var el = elements[i];
@@ -271,17 +302,20 @@
       // Actualizar botones de toggle
       var toggleDesktop = document.getElementById('langToggle');
       var toggleMobile = document.getElementById('langToggleMobile');
-      if (lang === 'es') {
-        toggleDesktop.textContent = 'EN';
-        toggleDesktop.setAttribute('aria-label', 'Cambiar idioma a inglés');
-        toggleMobile.textContent = 'English';
-        toggleMobile.setAttribute('aria-label', 'Cambiar idioma a inglés');
-      } else {
-        toggleDesktop.textContent = 'ES';
-        toggleDesktop.setAttribute('aria-label', 'Cambiar idioma a español');
-        toggleMobile.textContent = 'Español';
-        toggleMobile.setAttribute('aria-label', 'Cambiar idioma a español');
+      if (toggleDesktop) {
+        toggleDesktop.textContent = lang === 'es' ? 'EN' : 'ES';
+        toggleDesktop.setAttribute('aria-label', lang === 'es' ? 'Cambiar idioma a inglés' : 'Switch language to Spanish');
       }
+      if (toggleMobile) {
+        toggleMobile.textContent = lang === 'es' ? 'English' : 'Español';
+        toggleMobile.setAttribute('aria-label', lang === 'es' ? 'Cambiar idioma a inglés' : 'Switch language to Spanish');
+      }
+    }
+
+    // ---- Recuperar idioma guardado al cargar ----
+    var savedLang = localStorage.getItem('trackflow-lang');
+    if (savedLang && (savedLang === 'es' || savedLang === 'en')) {
+      currentLang = savedLang;
     }
 
     // ---- Carga de componentes ----
@@ -290,7 +324,6 @@
         .then(function(r) { return r.text(); })
         .then(function(html) {
           document.getElementById(id).innerHTML = html;
-          // Después de inyectar, re-aplicar idioma actual
           applyLanguage(currentLang);
         })
         .catch(function(err) {
@@ -298,13 +331,12 @@
         });
     }
 
-    // ---- Event delegation para botones toggle (funciona aunque se inyecten después) ----
+    // ---- Event delegation ----
     document.addEventListener('click', function(e) {
       var target = e.target;
       if (target.id === 'langToggle' || target.id === 'langToggleMobile') {
         applyLanguage(currentLang === 'es' ? 'en' : 'es');
       }
-      // Menú hamburguesa
       if (target.id === 'menuToggle') {
         var menu = document.getElementById('mobileMenu');
         if (menu) {
@@ -313,7 +345,6 @@
           menu.classList.toggle('hidden');
         }
       }
-      // Cerrar menú al hacer clic en enlaces
       if (target.closest && target.closest('#mobileMenu a')) {
         var menuToggle = document.getElementById('menuToggle');
         var mobileMenu = document.getElementById('mobileMenu');
@@ -326,6 +357,11 @@
     loadComponent('hero-container', 'components/hero.html');
     loadComponent('about-container', 'components/about.html');
     loadComponent('footer-container', 'components/footer.html');
+
+    // Aplicar idioma al cargar (después de que los componentes se inyecten)
+    window.addEventListener('load', function() {
+      applyLanguage(currentLang);
+    });
   </script>
 </body>
 </html>

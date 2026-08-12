@@ -608,10 +608,40 @@
 
     var currentLang = 'es';
 
+    // Meta tags dinámicos para formulario
+    var pageMeta = {
+      es: {
+        title: 'TrackFlow — Solicitud de Información',
+        ogTitle: 'TrackFlow — Solicitud de Información',
+        ogDesc: 'Completa el formulario y recibe una propuesta personalizada de TrackFlow en 24-48 horas.',
+        twitterTitle: 'TrackFlow — Solicitud de Información',
+        twitterDesc: 'Completa el formulario y recibe una propuesta personalizada de TrackFlow en 24-48 horas.'
+      },
+      en: {
+        title: 'TrackFlow — Information Request',
+        ogTitle: 'TrackFlow — Information Request',
+        ogDesc: 'Complete our form and receive a personalized proposal from TrackFlow within 24-48 hours.',
+        twitterTitle: 'TrackFlow — Information Request',
+        twitterDesc: 'Complete our form and receive a personalized proposal from TrackFlow within 24-48 hours.'
+      }
+    };
+
     function applyLanguage(lang) {
       currentLang = lang;
+      localStorage.setItem('trackflow-lang', lang);
       document.documentElement.setAttribute('lang', lang === 'es' ? 'es' : 'en');
       document.documentElement.setAttribute('data-lang', lang);
+
+      // Traducir title y meta tags
+      document.title = pageMeta[lang].title;
+      var ogTitle = document.querySelector('meta[property="og:title"]');
+      var ogDesc = document.querySelector('meta[property="og:description"]');
+      var twTitle = document.querySelector('meta[name="twitter:title"]');
+      var twDesc = document.querySelector('meta[name="twitter:description"]');
+      if (ogTitle) ogTitle.setAttribute('content', pageMeta[lang].ogTitle);
+      if (ogDesc) ogDesc.setAttribute('content', pageMeta[lang].ogDesc);
+      if (twTitle) twTitle.setAttribute('content', pageMeta[lang].twitterTitle);
+      if (twDesc) twDesc.setAttribute('content', pageMeta[lang].twitterDesc);
 
       var elements = document.querySelectorAll('[data-i18n]');
       for (var i = 0; i < elements.length; i++) {
@@ -666,6 +696,12 @@
         .catch(function(err) {
           console.error('Error cargando ' + url + ':', err);
         });
+    }
+
+    // ---- Recuperar idioma guardado al cargar ----
+    var savedLang = localStorage.getItem('trackflow-lang');
+    if (savedLang && (savedLang === 'es' || savedLang === 'en')) {
+      currentLang = savedLang;
     }
 
     // ---- Event delegation ----
@@ -895,6 +931,11 @@
       // Botón de envío se habilita/deshabilita en base a validación
       // (lo dejamos siempre habilitado, la validación ocurre en submit)
     })();
+
+    // Aplicar idioma al cargar
+    window.addEventListener('load', function() {
+      applyLanguage(currentLang);
+    });
   </script>
 </body>
 </html>
