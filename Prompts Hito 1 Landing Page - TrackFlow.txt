@@ -1,0 +1,298 @@
+# 🎨 PROMPT MAESTRO — Generación de Landing Page Profesional
+
+## 🏢 Identidad de la Empresa
+**Nombre de la empresa:** TrackFlow  
+**Slogan oficial:** “Conectamos Rutas, Optimizamos Movimiento.”
+
+## 📘 Definición de la empresa
+**TrackFlow** es una empresa de gestión de almacenes y entregas de última milla, fundada en **2009** en **Los Ángeles, Estados Unidos**.  
+Opera en:  
+- **Estados Unidos (Los Ángeles)**  
+- **España (Zaragoza)**
+
+## 📦 Servicios
+1. **Gestión de almacenes para marcas de E‑Commerce**  
+2. **Entrega de última milla**  
+3. **Logística inversa**
+
+---
+
+# 🛠️ **Requisitos Técnicos del Sitio**
+
+## 🔧 Tecnologías y estructura obligatoria
+
+- **Tailwind CSS v4** como framework principal de estilos  
+- **HTML semántico** para accesibilidad y SEO
+- **Diseño Mobile‑First obligatorio:**  
+  - Estilos base pensados para pantallas pequeñas  
+  - Escalado progresivo hacia tablet y escritorio  
+  - Uso de breakpoints con min-width  
+  - Optimización de carga para dispositivos móviles
+
+⚠️ **IMPORTANTE:**  
+Los nombres de campos, IDs de entidad y valores específicos del dominio en tu implementación deben coincidir **exactamente** con lo especificado en tu `CONTEXT-HT1.es.md`.  
+Una implementación genérica que ignore el contexto **no será aceptada**.
+
+- **Accesible:**  
+  - Uso de etiquetas ARIA cuando sea necesario  
+  - Atributos **alt** en todas las imágenes  
+  - Navegación clara y compatible con lectores de pantalla  
+- **Optimizado para SEO:**  
+  - Implementación obligatoria de **Schema.org JSON‑LD**  
+  - Estructura semántica correcta  
+  - Metadatos completos  
+- **Validación completa del formulario con JavaScript:**  
+  - Todos los campos deben validarse antes de “enviar”  
+  - Mensajes de error claros y visibles  
+  - Botón de envío deshabilitado si falta información  
+- **Diseño responsive obligatorio:**  
+  - Debe verse bien en **móvil**, **tablet** y **escritorio**  
+  - Ajuste fluido de columnas  
+  - Hero optimizado para pantallas pequeñas  
+  - Menú adaptable  
+- **Compatibilidad con navegadores modernos** (Chrome, Edge, Firefox, Safari)  
+- **Separación de páginas:**  
+  - `/index.html` → Landing Page  
+  - `/aplicacion.html` → Formulario de Aplicación  
+- **Control de errores en tiempo real**  
+- **Contador de caracteres** en comentarios  
+- **Advertencia automática** para volúmenes menores a 100 envíos/mes  
+- **Estructura modular del CSS** (solo Tailwind; evitar CSS manual salvo casos extremos)  
+- **No requiere backend por ahora** (solo validación en frontend)
+
+---
+
+# 🌟 Profesionalismo
+
+Este sitio representa el **debut digital oficial de TrackFlow**.  
+Debe transmitir:
+
+- Confianza  
+- Seriedad  
+- Experiencia  
+- Modernidad  
+- Claridad  
+- Excelente diseño visual  
+
+La impresión debe ser **impecable**
+
+## 📌 El sitio debe tener dos partes claramente definidas:
+---
+
+## **1️⃣ Landing Page**
+
+Debe incluir:
+
+- **Encabezado con navegación clara**  
+- **Sección hero** que explique qué hacemos y por qué deberían elegirnos  
+- **Sección destacando nuestras características principales o beneficios clave**  
+  (basados en nuestra experiencia en el sector)  
+- **Información de contacto o llamado a la acción (CTA)**  
+- **Pie de página profesional**
+
+---
+
+## **2️⃣ Formulario de Aplicación / Registro**
+
+- Debe ser una **página separada**  
+- Las personas podrán:  
+  - Completar sus **datos personales**  
+  - Proporcionar la **información específica** que necesitamos  
+  - **Enviar su aplicación**  
+- **No se conectará aún**, solo validará los datos  
+- Debe mantener coherencia visual con la Landing Page
+
+---
+
+## 🎯 Meta del Sitio Web
+Actuar como vendedor digital trabajando **24/7**.
+
+## 🎯 Acciones del Sitio Web
+Conseguir el teléfono y correo de los tomadores de decisiones de las empresas.
+
+## 📨 Formulario del Sitio Web
+Para cumplir con la meta y las acciones del sitio, se solicita un formulario para que las empresas puedan solicitar información.
+
+### Datos a capturar en el formulario:
+- Datos de la empresa  
+- Tipo de producto que maneja  
+- Volumen mensual estimado de envíos  
+- Países donde operan  
+- Servicios que les interesan
+
+---
+
+## 📋 Campos del Formulario de Solicitud de Información
+
+### Tabla de Campos del Formulario
+
+| Campo                               | Tipo     | Validación                                             | Obligatorio |
+|-------------------------------------|----------|---------------------------------------------------------|-------------|
+| Nombre de la Empresa                | text     | Mínimo 2 caracteres                                     | Sí          |
+| Persona de Contacto                 | text     | Mínimo 2 palabras (nombre y apellido)                   | Sí          |
+| Email Corporativo                   | email    | Formato válido de email                                 | Sí          |
+| Teléfono                            | tel      | Formato: +[código país][número]                         | Sí          |
+| Sitio Web de la Empresa             | URL      | Formato URL válido                                      | No          |
+| País de Operación Principal         | select   | Estados Unidos / España / Ambos / Otro                  | Sí          |
+| Tipo de Producto                    | select   | Moda / Electrónica / Cosmética / Alimentación / Otro    | Sí          |
+| Volumen Mensual Estimado de Envíos  | select   | 0-100 / 101-500 / 501-2000 / 2000+ / No estoy seguro    | Sí          |
+| Servicios de Interés                | checkbox | Almacenaje / Última Milla / Logística Inversa / Multiple | Sí         |
+| Actualmente trabaja con otro 3PL?   | radio    | Sí / No / Estoy evaluando opciones                      | Sí          |
+| Comentarios o Necesidades Específicas | textarea | Máximo 500 caracteres                                   | No          |
+| Acepto Política de Privacidad       | checkbox | Debe estar marcado para enviar                          | Sí          |
+
+---
+
+## 🔒 Validaciones Específicas del Formulario
+
+- Nombre de empresa: Mínimo 2 caracteres  
+- Persona de contacto: Debe contener al menos nombre y apellido  
+- Email: Debe ser formato válido (contener @ y dominio)  
+- Teléfono: Debe comenzar con + seguido del código de país  
+- Sitio web: Si se proporciona, debe ser una URL válida (comenzar con http:// o https://)  
+- Servicios de interés: Al menos una opción debe estar seleccionada  
+- Comentarios: Limitar a 500 caracteres con contador visible  
+- Política de privacidad: El checkbox debe estar marcado para poder enviar
+
+---
+
+# ❗ Mensajes de Error Esperados
+
+- Nombre de empresa: "El nombre de la empresa debe tener al menos 2 caracteres"
+- Persona de contacto: "Ingresa nombre y apellido del contacto"
+- Email: "Ingresa un email corporativo válido (ejemplo: nombre@empresa.com)"
+- Teléfono: "El teléfono debe incluir código de país (ejemplo: +1 213 555 0147)"
+- Sitio web: "Si incluyes sitio web, debe ser una URL válida"
+- País: "Selecciona el país de operación principal"
+- Tipo de producto: "Selecciona el tipo de producto que manejas"
+- Volumen mensual: "Selecciona el volumen mensual estimado"
+- Servicios de interés: "Selecciona al menos un servicio de interés"
+- 3PL actual: "Indica si actualmente trabajas con otro proveedor logístico"
+- Comentarios: "Los comentarios no pueden exceder 500 caracteres (quedan X)"
+- Política de privacidad: "Debes aceptar la política de privacidad para continuar"
+
+---
+
+## ⚠️ Restricción Específica del Formulario
+
+El formulario está diseñado para empresas de e-commerce que buscan externalizar su logística, no para consumidores finales que quieren rastrear un paquete o hacer una devolución.
+
+Si detectas que el volumen seleccionado es **"0-100 envíos/mes"** **Y** el campo **"Tipo de producto"** es relevante, incluir el siguiente mensaje de advertencia:
+
+**"Para volúmenes menores a 100 envíos mensuales, nuestros servicios podrían no ser la solución más eficiente. ¿Seguro que quieres continuar?"**
+---
+
+## ✅ Mensaje de Éxito
+
+**¡Gracias por tu interés en TrackFlow!**
+
+Hemos recibido tu solicitud. Nuestro equipo comercial revisará tu información y te contactará en las próximas **24-48 horas** para agendar una llamada y conocer tus necesidades logísticas en detalle.
+
+Si tienes alguna consulta urgente, escríbenos directamente a **comercial@trackflow.com**
+---
+
+## 📌 Schema.org Markup Requerido
+
+Implementar el siguiente marcado JSON‑LD en la landing page:
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "TrackFlow",
+  "description": "Gestión de almacenes y entregas de última milla para e-commerce",
+  "url": "https://trackflow.com",
+  "foundingDate": "2009",
+  "address": [
+    {
+      "@type": "PostalAddress",
+      "addressCountry": "US",
+      "addressLocality": "Los Ángeles",
+      "addressRegion": "California"
+    },
+    {
+      "@type": "PostalAddress",
+      "addressCountry": "ES",
+      "addressLocality": "Zaragoza",
+      "addressRegion": "Aragón"
+    }
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+1-213-555-0147",
+    "contactType": "sales",
+    "availableLanguage": ["Spanish", "English"]
+  },
+  "sameAs": ["https://linkedin.com/company/trackflow"],
+  "areaServed": [
+    { "@type": "Country", "name": "Estados Unidos" },
+    { "@type": "Country", "name": "Spain" }
+  ]
+}
+</script>
+
+---
+
+## 🛠️ Características del Sitio Web
+Responsive, accesible, optimizado para SEO.
+
+## 🧩 Tecnologías
+Tailwind CSS version 4, validación completa del formulario.
+
+## 🌐 Idioma
+Multiidioma (ES/EN).  
+Idioma base: Español.
+
+# 📄 Contenido del Landing Page
+
+### Header
+Logo / Nombre  
+Navegación: Inicio, Servicios, Cobertura y Contacto
+
+### Hero
+Titular: “Logística que escala con tu E‑Commerce”  
+Subtítulos:  
+“Gestión de almacenes, entregas de última milla y logística inversa en Estados Unidos y España.  
+Más de 15 años ayudando a marcas de moda, electrónica y cosmética a crecer sin preocuparse por la operación.”  
+CTA: “Solicitar Información”
+
+### Los Servicios (3 columnas)
+#### Gestión de Almacenes
+- Almacenamiento, picking y packing.  
+- Inventario en tiempo real.  
+- Operamos almacenes en Los Ángeles y Zaragoza.
+
+#### Entrega de Última Milla
+- Red de carriers certificados en ambos países.  
+- Seguimiento unificado de envíos.  
+- Gestión de incidencias y devoluciones.
+
+#### Logística Inversa
+- Gestión completa de devoluciones.  
+- Inspección y reacondicionamiento.  
+- Integración con tu plataforma de ventas.
+
+### Cobertura (2 columnas)
+#### Estados Unidos
+- Almacén en Los Ángeles  
+- Cobertura nacional  
+- Carriers: UPS, FedEx, DHL
+
+#### España
+- Almacén en Zaragoza  
+- Cobertura peninsular e islas  
+- Carriers: MRW, SEUR, DHL
+
+### Por qué TrackFlow (4 Beneficios)
+- Operación binacional: El único operador con infraestructura propia en Estados Unidos y España.  
+- +130 profesionales dedicados a tu logística.  
+- Tecnología propia para visibilidad total de tu inventario.  
+- Especialización e-commerce en moda, electrónica y cosmética.
+
+### Contacto
+Email: comercial@trackflow.com  
+Los Ángeles: +1 213 555 0147  
+Zaragoza: +34 976 123 456
+
+### Footer
+© 2026 TrackFlow. Todos los derechos reservados.  
