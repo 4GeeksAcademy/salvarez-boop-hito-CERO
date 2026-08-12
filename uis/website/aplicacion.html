@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="es" data-lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TrackFlow — Solicitud de Información</title>
+  <meta name="description" content="Solicita información sobre los servicios de TrackFlow: gestión de almacenes, entregas de última milla y logística inversa en Estados Unidos y España.">
+  <meta name="keywords" content="logística, almacenes, última milla, e-commerce, TrackFlow, formulario, solicitud">
+  <meta name="author" content="TrackFlow">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="TrackFlow — Solicitud de Información">
+  <meta property="og:description" content="Completa el formulario y recibe una propuesta personalizada de TrackFlow en 24-48 horas.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://trackflow.com/aplicacion">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:site_name" content="TrackFlow">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="TrackFlow — Solicitud de Información">
+  <meta name="twitter:description" content="Completa el formulario y recibe una propuesta personalizada de TrackFlow en 24-48 horas.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <link rel="apple-touch-icon" href="assets/img/favicon.svg">
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "TrackFlow",
+    "description": "Gestión de almacenes y entregas de última milla para e-commerce",
+    "url": "https://trackflow.com",
+    "foundingDate": "2009",
+    "slogan": "Conectamos Rutas, Optimizamos Movimiento.",
+    "address": [
+      {
+        "@type": "PostalAddress",
+        "addressCountry": "US",
+        "addressLocality": "Los Ángeles",
+        "addressRegion": "California"
+      },
+      {
+        "@type": "PostalAddress",
+        "addressCountry": "ES",
+        "addressLocality": "Zaragoza",
+        "addressRegion": "Aragón"
+      }
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+1-213-555-0147",
+      "contactType": "sales",
+      "availableLanguage": ["Spanish", "English"]
+    },
+    "sameAs": ["https://linkedin.com/company/trackflow"],
+    "areaServed": [
+      { "@type": "Country", "name": "Estados Unidos" },
+      { "@type": "Country", "name": "Spain" }
+    ]
+  }
+  </script>
+
+  <!-- Tailwind CSS v4 via CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+  <!-- Global CSS -->
+  <link rel="stylesheet" href="assets/css/global.css">
+</head>
+<body class="font-sans text-[#1B2A4A] bg-[#F8F9FA]">
+
+  <!-- ============================================================ -->
+  <!-- NAVBAR (cargado desde components/navbar.html)                -->
+  <!-- ============================================================ -->
+  <div id="navbar-container"></div>
+
+  <!-- ============================================================ -->
+  <!-- FORMULARIO                                                    -->
+  <!-- ============================================================ -->
+  <main>
+    <section class="py-16 sm:py-20 lg:py-28">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- Encabezado -->
+        <div class="text-center mb-10 sm:mb-12">
+          <span class="inline-block text-[#C60B1E] font-semibold text-sm sm:text-base uppercase tracking-widest mb-3" data-i18n="form.tag">Solicitud de Información</span>
+          <h1 class="text-[#002868] font-bold text-2xl sm:text-3xl lg:text-4xl leading-tight" data-i18n="form.title">
+            Cuéntanos sobre tu empresa
+          </h1>
+          <p class="text-[#1B2A4A]/60 text-sm sm:text-base lg:text-lg max-w-xl mx-auto mt-4" data-i18n="form.subtitle">
+            Completa todos los campos y nuestro equipo comercial te contactará en 24-48 horas.
+          </p>
+        </div>
+
+        <!-- Formulario -->
+        <form id="formSolicitud" novalidate class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sm:p-8 lg:p-10">
+
+          <!-- Mensaje de éxito (oculto inicialmente) -->
+          <div id="successMessage" class="hidden bg-green-50 border border-green-200 rounded-xl p-6 sm:p-8 mb-6 text-center">
+            <div class="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <h3 class="text-green-800 font-bold text-lg sm:text-xl mb-2" data-i18n="form.success.title">¡Gracias por tu interés en TrackFlow!</h3>
+            <p class="text-green-700 text-sm sm:text-base leading-relaxed" data-i18n="form.success.desc">
+              Hemos recibido tu solicitud. Nuestro equipo comercial revisará tu información y te contactará en las próximas 24-48 horas para agendar una llamada y conocer tus necesidades logísticas en detalle.
+            </p>
+            <p class="text-green-700 text-sm sm:text-base mt-3">
+              <span data-i18n="form.success.contact">Si tienes alguna consulta urgente, escríbenos directamente a</span>
+              <a href="mailto:comercial@trackflow.com" class="text-[#002868] font-semibold hover:underline">comercial@trackflow.com</a>
+            </p>
+            <a
+              href="index.html"
+              class="inline-flex items-center gap-2 mt-6 bg-[#002868] hover:bg-[#003A8C] text-white font-semibold text-sm px-6 py-3 rounded-xl transition-all duration-300"
+              data-i18n="form.success.back"
+            >Volver al inicio</a>
+          </div>
+
+          <!-- Campos del formulario -->
+          <div id="formFields" class="space-y-6">
+
+            <!-- Fila: 2 columnas en desktop -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+
+              <!-- 1. Nombre de la Empresa -->
+              <div>
+                <label for="empresa" class="block text-[#002868] font-semibold text-sm sm:text-base mb-1.5">
+                  <span data-i18n="form.empresa.label">Nombre de la empresa</span>
+                  <span class="text-[#C60B1E]">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="empresa"
+                  name="empresa"
+                  class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-[#FFC400] focus:border-transparent transition-all duration-200"
+                  placeholder="Ej: Mi Tienda S.A."
+                  data-i18n-placeholder="form.empresa.placeholder"
+                  required
+                  minlength="2"
+                  autocomplete="organization"
+                >
+                <p id="empresa-error" class="text-[#C60B1E] text-xs mt-1 hidden" role="alert"></p>
+              </div>
+
+              <!-- 2. Persona de Contacto -->
+              <div>
+                <label for="contacto" class="block text-[#002868] font-semibold text-sm sm:text-base mb-1.5">
+                  <span data-i18n="form.contacto.label">Persona de contacto</span>
+                  <span class="text-[#C60B1E]">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="contacto"
+                  name="contacto"
+                  class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-[#FFC400] focus:border-transparent transition-all duration-200"
+                  placeholder="Ej: María García"
+                  data-i18n-placeholder="form.contacto.placeholder"
+                  required
+                  autocomplete="name"
+                >
+                <p id="contacto-error" class="text-[#C60B1E] text-xs mt-1 hidden" role="alert"></p>
+              </div>
+
+            </div>
+
+            <!-- Fila: 2 columnas en desktop -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+
+              <!-- 3. Email Corporativo -->
+              <div>
+                <label for="email" class="block text-[#002868] font-semibold text-sm sm:text-base mb-1.5">
+                  <span data-i18n="form.email.label">Email corporativo</span>
+                  <span class="text-[#C60B1E]">*</span>
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-[#FFC400] focus:border-transparent transition-all duration-200"
+                  placeholder="Ej: maria@mitienda.com"
+                  data-i18n-placeholder="form.email.placeholder"
+                  required
+                  autocomplete="email"
+                >
+                <p id="email-error" class="text-[#C60B1E] text-xs mt-1 hidden" role="alert"></p>
+              </div>
+
+              <!-- 4. Teléfono -->
+              <div>
+                <label for="telefono" class="block text-[#002868] font-semibold text-sm sm:text-base mb-1.5">
+                  <span data-i18n="form.telefono.label">Teléfono</span>
+                  <span class="text-[#C60B1E]">*</span>
+                </label>
+                <input
+                  type="tel"
+                  id="telefono"
+                  name="telefono"
+                  class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-[#FFC400] focus:border-transparent transition-all duration-200"
+                  placeholder="Ej: +1 213 555 0147"
+                  data-i18n-placeholder="form.telefono.placeholder"
+                  required
+                  autocomplete="tel"
+                >
+                <p id="telefono-error" class="text-[#C60B1E] text-xs mt-1 hidden" role="alert"></p>
+              </div>
+
+            </div>
+
+            <!-- 5. Sitio Web (opcional) -->
+            <div>
+              <label for="sitioWeb" class="block text-[#002868] font-semibold text-sm sm:text-base mb-1.5">
+                <span data-i18n="form.sitioWeb.label">Sitio web de la empresa</span>
+                <span class="text-[#1B2A4A]/40 text-xs font-normal" data-i18n="form.optional">(opcional)</span>
+              </label>
+              <input
+                type="url"
+                id="sitioWeb"
+                name="sitioWeb"
+                class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-[#FFC400] focus:border-transparent transition-all duration-200"
+                placeholder="Ej: https://mitienda.com"
+                data-i18n-placeholder="form.sitioWeb.placeholder"
+                autocomplete="url"
+              >
+              <p id="sitioWeb-error" class="text-[#C60B1E] text-xs mt-1 hidden" role="alert"></p>
+            </div>
+
+            <!-- Fila: 2 columnas en desktop -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+
+              <!-- 6. País de Operación Principal -->
+              <div>
+                <label for="pais" class="block text-[#002868] font-semibold text-sm sm:text-base mb-1.5">
+                  <span data-i18n="form.pais.label">País de operación principal</span>
+                  <span class="text-[#C60B1E]">*</span>
+                </label>
+                <select
+                  id="pais"
+                  name="pais"
+                  class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-[#FFC400] focus:border-transparent transition-all duration-200 bg-white"
+                  required
+                >
+                  <option value="" data-i18n="form.pais.default">Selecciona un país</option>
+                  <option value="US" data-i18n="form.pais.us">Estados Unidos</option>
+                  <option value="ES" data-i18n="form.pais.es">España</option>
+                  <option value="both" data-i18n="form.pais.both">Ambos</option>
+                  <option value="other" data-i18n="form.pais.other">Otro</option>
+                </select>
+                <p id="pais-error" class="text-[#C60B1E] text-xs mt-1 hidden" role="alert"></p>
+              </div>
+
+              <!-- 7. Tipo de Producto -->
+              <div>
+                <label for="producto" class="block text-[#002868] font-semibold text-sm sm:text-base mb-1.5">
+                  <span data-i18n="form.producto.label">Tipo de producto</span>
+                  <span class="text-[#C60B1E]">*</span>
+                </label>
+                <select
+                  id="producto"
+                  name="producto"
+                  class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-[#FFC400] focus:border-transparent transition-all duration-200 bg-white"
+                  required
+                >
+                  <option value="" data-i18n="form.producto.default">Selecciona un tipo</option>
+                  <option value="moda" data-i18n="form.producto.moda">Moda</option>
+                  <option value="electronica" data-i18n="form.producto.electronica">Electrónica</option>
+                  <option value="cosmetica" data-i18n="form.producto.cosmetica">Cosmética</option>
+                  <option value="alimentacion" data-i18n="form.producto.alimentacion">Alimentación</option>
+                  <option value="otro" data-i18n="form.producto.otro">Otro</option>
+                </select>
+                <p id="producto-error" class="text-[#C60B1E] text-xs mt-1 hidden" role="alert"></p>
+              </div>
+
+            </div>
+
+            <!-- 8. Volumen Mensual -->
+            <div>
+              <label for="volumen" class="block text-[#002868] font-semibold text-sm sm:text-base mb-1.5">
+                <span data-i18n="form.volumen.label">Volumen mensual estimado de envíos</span>
+                <span class="text-[#C60B1E]">*</span>
+              </label>
+              <select
+                id="volumen"
+                name="volumen"
+                class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-[#FFC400] focus:border-transparent transition-all duration-200 bg-white"
+                required
+              >
+                <option value="" data-i18n="form.volumen.default">Selecciona un volumen</option>
+                <option value="0-100" data-i18n="form.volumen.0-100">0-100 envíos/mes</option>
+                <option value="101-500" data-i18n="form.volumen.101-500">101-500 envíos/mes</option>
+                <option value="501-2000" data-i18n="form.volumen.501-2000">501-2000 envíos/mes</option>
+                <option value="2000+" data-i18n="form.volumen.2000">Más de 2000 envíos/mes</option>
+                <option value="unsure" data-i18n="form.volumen.unsure">No estoy seguro</option>
+              </select>
+              <p id="volumen-error" class="text-[#C60B1E] text-xs mt-1 hidden" role="alert"></p>
+
+              <!-- Advertencia volumen bajo (oculta) -->
+              <div id="volumen-warning" class="hidden bg-amber-50 border border-amber-200 rounded-xl p-4 mt-3 flex items-start gap-3">
+                <svg class="w-5 h-5 text-amber-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                </svg>
+                <p class="text-amber-700 text-xs sm:text-sm" data-i18n="form.volumen.warning">
+                  Para volúmenes menores a 100 envíos mensuales, nuestros servicios podrían no ser la solución más eficiente. ¿Seguro que quieres continuar?
+                </p>
+              </div>
+            </div>
+
+            <!-- 9. Servicios de Interés (checkbox) -->
+            <fieldset>
+              <legend class="block text-[#002868] font-semibold text-sm sm:text-base mb-3">
+                <span data-i18n="form.servicios.label">Servicios de interés</span>
+                <span class="text-[#C60B1E]">*</span>
+              </legend>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <label class="flex items-center gap-3 bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 cursor-pointer hover:border-[#FFC400] transition-colors duration-200 has-checked:bg-[#FFC400]/5 has-checked:border-[#FFC400]">
+                  <input type="checkbox" name="servicios" value="almacenaje" class="w-4 h-4 accent-[#FFC400] rounded">
+                  <span class="text-sm sm:text-base text-[#1B2A4A] font-medium" data-i18n="form.servicios.almacenaje">Almacenaje</span>
+                </label>
+                <label class="flex items-center gap-3 bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 cursor-pointer hover:border-[#FFC400] transition-colors duration-200 has-checked:bg-[#FFC400]/5 has-checked:border-[#FFC400]">
+                  <input type="checkbox" name="servicios" value="ultima-milla" class="w-4 h-4 accent-[#FFC400] rounded">
+                  <span class="text-sm sm:text-base text-[#1B2A4A] font-medium" data-i18n="form.servicios.ultimaMilla">Última milla</span>
+                </label>
+                <label class="flex items-center gap-3 bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 cursor-pointer hover:border-[#FFC400] transition-colors duration-200 has-checked:bg-[#FFC400]/5 has-checked:border-[#FFC400]">
+                  <input type="checkbox" name="servicios" value="logistica-inversa" class="w-4 h-4 accent-[#FFC400] rounded">
+                  <span class="text-sm sm:text-base text-[#1B2A4A] font-medium" data-i18n="form.servicios.inversa">Logística inversa</span>
+                </label>
+              </div>
+              <p id="servicios-error" class="text-[#C60B1E] text-xs mt-1 hidden" role="alert"></p>
+            </fieldset>
+
+            <!-- 10. Trabaja con otro 3PL? (radio) -->
+            <fieldset>
+              <legend class="block text-[#002868] font-semibold text-sm sm:text-base mb-3">
+                <span data-i18n="form.tpl.label">¿Actualmente trabajas con otro proveedor logístico?</span>
+                <span class="text-[#C60B1E]">*</span>
+              </legend>
+              <div class="flex flex-wrap gap-4 sm:gap-6">
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="radio" name="tpl" value="si" class="w-4 h-4 accent-[#FFC400]">
+                  <span class="text-sm sm:text-base text-[#1B2A4A]" data-i18n="form.tpl.si">Sí</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="radio" name="tpl" value="no" class="w-4 h-4 accent-[#FFC400]">
+                  <span class="text-sm sm:text-base text-[#1B2A4A]" data-i18n="form.tpl.no">No</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="radio" name="tpl" value="evaluando" class="w-4 h-4 accent-[#FFC400]">
+                  <span class="text-sm sm:text-base text-[#1B2A4A]" data-i18n="form.tpl.evaluando">Estoy evaluando opciones</span>
+                </label>
+              </div>
+              <p id="tpl-error" class="text-[#C60B1E] text-xs mt-1 hidden" role="alert"></p>
+            </fieldset>
+
+            <!-- 11. Comentarios -->
+            <div>
+              <label for="comentarios" class="block text-[#002868] font-semibold text-sm sm:text-base mb-1.5">
+                <span data-i18n="form.comentarios.label">Comentarios o necesidades específicas</span>
+                <span class="text-[#1B2A4A]/40 text-xs font-normal" data-i18n="form.optional">(opcional)</span>
+              </label>
+              <textarea
+                id="comentarios"
+                name="comentarios"
+                rows="4"
+                maxlength="500"
+                class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-[#FFC400] focus:border-transparent transition-all duration-200 resize-y"
+                placeholder="Ej: Necesitamos almacenamiento en Los Ángeles y entregas en todo EE.UU."
+                data-i18n-placeholder="form.comentarios.placeholder"
+              ></textarea>
+              <div class="flex items-center justify-between mt-1">
+                <p id="comentarios-error" class="text-[#C60B1E] text-xs hidden" role="alert"></p>
+                <p id="comentarios-counter" class="text-[#1B2A4A]/40 text-xs ml-auto">0/500</p>
+              </div>
+            </div>
+
+            <!-- 12. Política de Privacidad -->
+            <div>
+              <label class="flex items-start gap-3 cursor-pointer">
+                <input type="checkbox" id="privacidad" name="privacidad" class="w-4 h-4 accent-[#FFC400] mt-0.5" required>
+                <span class="text-sm sm:text-base text-[#1B2A4A]/80">
+                  <span data-i18n="form.privacidad.label">Acepto la</span>
+                  <a href="#" class="text-[#002868] font-semibold hover:underline" data-i18n="form.privacidad.link">Política de Privacidad</a>
+                  <span class="text-[#C60B1E]">*</span>
+                </span>
+              </label>
+              <p id="privacidad-error" class="text-[#C60B1E] text-xs mt-1 hidden" role="alert"></p>
+            </div>
+
+            <!-- Botón de envío -->
+            <div class="pt-4">
+              <button
+                type="submit"
+                id="btnEnviar"
+                class="w-full sm:w-auto bg-[#002868] hover:bg-[#003A8C] disabled:bg-gray-300 disabled:cursor-not-allowed text-white font-bold text-sm sm:text-base px-8 sm:px-10 py-3.5 sm:py-4 rounded-xl shadow-lg shadow-[#002868]/20 hover:shadow-[#002868]/30 transition-all duration-300 hover:scale-[1.02] focus-visible:outline-2 focus-visible:outline-[#002868] focus-visible:outline-offset-2"
+                data-i18n="form.submit"
+              >Enviar Solicitud</button>
+            </div>
+
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================================================ -->
+  <!-- FOOTER (cargado desde components/footer.html)                -->
+  <!-- ============================================================ -->
+  <div id="footer-container"></div>
+
+  <!-- ============================================================ -->
+  <!-- COMPONENT LOADER + LÓGICA GLOBAL + VALIDACIÓN FORMULARIO     -->
+  <!-- ============================================================ -->
+  <script>
+    // ---- Traducciones multidioma ----
+    var translations = {
+      es: {
+        'nav.home': 'Inicio',
+        'nav.services': 'Servicios',
+        'nav.coverage': 'Cobertura',
+        'nav.contact': 'Contacto',
+        // Contact / Footer (referencias desde footer)
+        'contact.tag': 'Contacto',
+        'contact.title.prefix': 'Hablemos de tu',
+        'contact.title.highlight': 'logística',
+        'contact.subtitle': 'Cuéntanos sobre tu negocio y descubramos juntos cómo TrackFlow puede impulsar tu operación.',
+        'contact.usa.title': 'Estados Unidos',
+        'contact.es.title': 'España',
+        'contact.linkedin': 'Síguenos en LinkedIn',
+        'contact.cta.title': '¿Listo para optimizar tu logística?',
+        'contact.cta.desc': 'Completa nuestro formulario y recibe una propuesta personalizada en 24-48 horas.',
+        'contact.cta.button': 'Solicitar Información',
+        'services.almacenes.title': 'Gestión de Almacenes',
+        'services.ultimamilla.title': 'Entregas de Última Milla',
+        'services.inversa.title': 'Logística Inversa',
+        'coverage.usa.title': 'Estados Unidos',
+        'coverage.es.title': 'España',
+        'footer.description': 'Conectamos rutas, optimizamos movimiento. Gestión de almacenes y entregas de última milla en Estados Unidos y España.',
+        'footer.services.title': 'Servicios',
+        'footer.coverage.title': 'Cobertura',
+        'footer.coverage.link': 'Ver cobertura completa',
+        'footer.contact.title': 'Contacto',
+        'footer.copyright': '&copy; 2025 TrackFlow. Todos los derechos reservados.',
+        'footer.privacy': 'Política de Privacidad',
+        // Formulario
+        'form.tag': 'Solicitud de Información',
+        'form.title': 'Cuéntanos sobre tu empresa',
+        'form.subtitle': 'Completa todos los campos y nuestro equipo comercial te contactará en 24-48 horas.',
+        'form.empresa.label': 'Nombre de la empresa',
+        'form.empresa.placeholder': 'Ej: Mi Tienda S.A.',
+        'form.contacto.label': 'Persona de contacto',
+        'form.contacto.placeholder': 'Ej: María García',
+        'form.email.label': 'Email corporativo',
+        'form.email.placeholder': 'Ej: maria@mitienda.com',
+        'form.telefono.label': 'Teléfono',
+        'form.telefono.placeholder': 'Ej: +1 213 555 0147',
+        'form.sitioWeb.label': 'Sitio web de la empresa',
+        'form.sitioWeb.placeholder': 'Ej: https://mitienda.com',
+        'form.pais.label': 'País de operación principal',
+        'form.pais.default': 'Selecciona un país',
+        'form.pais.us': 'Estados Unidos',
+        'form.pais.es': 'España',
+        'form.pais.both': 'Ambos',
+        'form.pais.other': 'Otro',
+        'form.producto.label': 'Tipo de producto',
+        'form.producto.default': 'Selecciona un tipo',
+        'form.producto.moda': 'Moda',
+        'form.producto.electronica': 'Electrónica',
+        'form.producto.cosmetica': 'Cosmética',
+        'form.producto.alimentacion': 'Alimentación',
+        'form.producto.otro': 'Otro',
+        'form.volumen.label': 'Volumen mensual estimado de envíos',
+        'form.volumen.default': 'Selecciona un volumen',
+        'form.volumen.0-100': '0-100 envíos/mes',
+        'form.volumen.101-500': '101-500 envíos/mes',
+        'form.volumen.501-2000': '501-2000 envíos/mes',
+        'form.volumen.2000': 'Más de 2000 envíos/mes',
+        'form.volumen.unsure': 'No estoy seguro',
+        'form.volumen.warning': 'Para volúmenes menores a 100 envíos mensuales, nuestros servicios podrían no ser la solución más eficiente. ¿Seguro que quieres continuar?',
+        'form.servicios.label': 'Servicios de interés',
+        'form.servicios.almacenaje': 'Almacenaje',
+        'form.servicios.ultimaMilla': 'Última milla',
+        'form.servicios.inversa': 'Logística inversa',
+        'form.tpl.label': '¿Actualmente trabajas con otro proveedor logístico?',
+        'form.tpl.si': 'Sí',
+        'form.tpl.no': 'No',
+        'form.tpl.evaluando': 'Estoy evaluando opciones',
+        'form.comentarios.label': 'Comentarios o necesidades específicas',
+        'form.comentarios.placeholder': 'Ej: Necesitamos almacenamiento en Los Ángeles y entregas en todo EE.UU.',
+        'form.privacidad.label': 'Acepto la',
+        'form.privacidad.link': 'Política de Privacidad',
+        'form.submit': 'Enviar Solicitud',
+        'form.optional': '(opcional)',
+        'form.success.title': '¡Gracias por tu interés en TrackFlow!',
+        'form.success.desc': 'Hemos recibido tu solicitud. Nuestro equipo comercial revisará tu información y te contactará en las próximas 24-48 horas para agendar una llamada y conocer tus necesidades logísticas en detalle.',
+        'form.success.contact': 'Si tienes alguna consulta urgente, escríbenos directamente a',
+        'form.success.back': 'Volver al inicio',
+        // Mensajes de error
+        'error.empresa': 'El nombre de la empresa debe tener al menos 2 caracteres',
+        'error.contacto': 'Ingresa nombre y apellido del contacto',
+        'error.email': 'Ingresa un email corporativo válido (ejemplo: nombre@empresa.com)',
+        'error.telefono': 'El teléfono debe incluir código de país (ejemplo: +1 213 555 0147)',
+        'error.sitioWeb': 'Si incluyes sitio web, debe ser una URL válida',
+        'error.pais': 'Selecciona el país de operación principal',
+        'error.producto': 'Selecciona el tipo de producto que manejas',
+        'error.volumen': 'Selecciona el volumen mensual estimado',
+        'error.servicios': 'Selecciona al menos un servicio de interés',
+        'error.tpl': 'Indica si actualmente trabajas con otro proveedor logístico',
+        'error.comentarios': 'Los comentarios no pueden exceder 500 caracteres (quedan ',
+        'error.privacidad': 'Debes aceptar la política de privacidad para continuar'
+      },
+      en: {
+        'nav.home': 'Home',
+        'nav.services': 'Services',
+        'nav.coverage': 'Coverage',
+        'nav.contact': 'Contact',
+        'contact.tag': 'Contact',
+        'contact.title.prefix': "Let's talk about your",
+        'contact.title.highlight': 'logistics',
+        'contact.subtitle': 'Tell us about your business and let us discover together how TrackFlow can boost your operations.',
+        'contact.usa.title': 'United States',
+        'contact.es.title': 'Spain',
+        'contact.linkedin': 'Follow us on LinkedIn',
+        'contact.cta.title': 'Ready to optimize your logistics?',
+        'contact.cta.desc': 'Complete our form and receive a personalized proposal within 24-48 hours.',
+        'contact.cta.button': 'Request Information',
+        'services.almacenes.title': 'Warehouse Management',
+        'services.ultimamilla.title': 'Last-Mile Delivery',
+        'services.inversa.title': 'Reverse Logistics',
+        'coverage.usa.title': 'United States',
+        'coverage.es.title': 'Spain',
+        'footer.description': 'We connect routes, optimize movement. Warehouse management and last-mile delivery in the United States and Spain.',
+        'footer.services.title': 'Services',
+        'footer.coverage.title': 'Coverage',
+        'footer.coverage.link': 'View full coverage',
+        'footer.contact.title': 'Contact',
+        'footer.copyright': '&copy; 2025 TrackFlow. All rights reserved.',
+        'footer.privacy': 'Privacy Policy',
+        // Form
+        'form.tag': 'Information Request',
+        'form.title': 'Tell us about your company',
+        'form.subtitle': 'Complete all fields and our sales team will contact you within 24-48 hours.',
+        'form.empresa.label': 'Company name',
+        'form.empresa.placeholder': 'E.g.: My Store Inc.',
+        'form.contacto.label': 'Contact person',
+        'form.contacto.placeholder': 'E.g.: Maria Garcia',
+        'form.email.label': 'Corporate email',
+        'form.email.placeholder': 'E.g.: maria@mystore.com',
+        'form.telefono.label': 'Phone',
+        'form.telefono.placeholder': 'E.g.: +1 213 555 0147',
+        'form.sitioWeb.label': 'Company website',
+        'form.sitioWeb.placeholder': 'E.g.: https://mystore.com',
+        'form.pais.label': 'Main country of operation',
+        'form.pais.default': 'Select a country',
+        'form.pais.us': 'United States',
+        'form.pais.es': 'Spain',
+        'form.pais.both': 'Both',
+        'form.pais.other': 'Other',
+        'form.producto.label': 'Product type',
+        'form.producto.default': 'Select a type',
+        'form.producto.moda': 'Fashion',
+        'form.producto.electronica': 'Electronics',
+        'form.producto.cosmetica': 'Cosmetics',
+        'form.producto.alimentacion': 'Food',
+        'form.producto.otro': 'Other',
+        'form.volumen.label': 'Estimated monthly shipping volume',
+        'form.volumen.default': 'Select a volume',
+        'form.volumen.0-100': '0-100 shipments/month',
+        'form.volumen.101-500': '101-500 shipments/month',
+        'form.volumen.501-2000': '501-2000 shipments/month',
+        'form.volumen.2000': 'Over 2000 shipments/month',
+        'form.volumen.unsure': 'Not sure',
+        'form.volumen.warning': 'For volumes under 100 monthly shipments, our services may not be the most efficient solution. Are you sure you want to continue?',
+        'form.servicios.label': 'Services of interest',
+        'form.servicios.almacenaje': 'Warehousing',
+        'form.servicios.ultimaMilla': 'Last mile',
+        'form.servicios.inversa': 'Reverse logistics',
+        'form.tpl.label': 'Do you currently work with another logistics provider?',
+        'form.tpl.si': 'Yes',
+        'form.tpl.no': 'No',
+        'form.tpl.evaluando': 'I am evaluating options',
+        'form.comentarios.label': 'Comments or specific needs',
+        'form.comentarios.placeholder': 'E.g.: We need warehousing in Los Angeles and deliveries across the US.',
+        'form.privacidad.label': 'I accept the',
+        'form.privacidad.link': 'Privacy Policy',
+        'form.submit': 'Submit Request',
+        'form.optional': '(optional)',
+        'form.success.title': 'Thank you for your interest in TrackFlow!',
+        'form.success.desc': 'We have received your request. Our sales team will review your information and contact you within 24-48 hours to schedule a call and learn about your logistics needs in detail.',
+        'form.success.contact': 'If you have any urgent questions, write to us directly at',
+        'form.success.back': 'Back to home',
+        // Error messages
+        'error.empresa': 'Company name must be at least 2 characters',
+        'error.contacto': 'Enter first and last name of contact person',
+        'error.email': 'Enter a valid corporate email (e.g.: name@company.com)',
+        'error.telefono': 'Phone must include country code (e.g.: +1 213 555 0147)',
+        'error.sitioWeb': 'If you include a website, it must be a valid URL',
+        'error.pais': 'Select the main country of operation',
+        'error.producto': 'Select the type of product you handle',
+        'error.volumen': 'Select the estimated monthly volume',
+        'error.servicios': 'Select at least one service of interest',
+        'error.tpl': 'Indicate if you currently work with another logistics provider',
+        'error.comentarios': 'Comments cannot exceed 500 characters (',
+        'error.privacidad': 'You must accept the privacy policy to continue'
+      }
+    };
+
+    var currentLang = 'es';
+
+    function applyLanguage(lang) {
+      currentLang = lang;
+      document.documentElement.setAttribute('lang', lang === 'es' ? 'es' : 'en');
+      document.documentElement.setAttribute('data-lang', lang);
+
+      var elements = document.querySelectorAll('[data-i18n]');
+      for (var i = 0; i < elements.length; i++) {
+        var el = elements[i];
+        var key = el.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+          el.textContent = translations[lang][key];
+        }
+      }
+
+      // Traducir placeholders
+      var placeholders = document.querySelectorAll('[data-i18n-placeholder]');
+      for (var i = 0; i < placeholders.length; i++) {
+        var el = placeholders[i];
+        var key = el.getAttribute('data-i18n-placeholder');
+        if (translations[lang] && translations[lang][key]) {
+          el.setAttribute('placeholder', translations[lang][key]);
+        }
+      }
+
+      // Traducir options de selects
+      var options = document.querySelectorAll('option[data-i18n]');
+      for (var i = 0; i < options.length; i++) {
+        var el = options[i];
+        var key = el.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+          el.textContent = translations[lang][key];
+        }
+      }
+
+      // Actualizar botones de toggle
+      var toggleDesktop = document.getElementById('langToggle');
+      var toggleMobile = document.getElementById('langToggleMobile');
+      if (toggleDesktop) {
+        toggleDesktop.textContent = lang === 'es' ? 'EN' : 'ES';
+        toggleDesktop.setAttribute('aria-label', lang === 'es' ? 'Cambiar idioma a inglés' : 'Switch language to Spanish');
+      }
+      if (toggleMobile) {
+        toggleMobile.textContent = lang === 'es' ? 'English' : 'Español';
+        toggleMobile.setAttribute('aria-label', lang === 'es' ? 'Cambiar idioma a inglés' : 'Switch language to Spanish');
+      }
+    }
+
+    // ---- Carga de componentes ----
+    function loadComponent(id, url) {
+      fetch(url)
+        .then(function(r) { return r.text(); })
+        .then(function(html) {
+          document.getElementById(id).innerHTML = html;
+          applyLanguage(currentLang);
+        })
+        .catch(function(err) {
+          console.error('Error cargando ' + url + ':', err);
+        });
+    }
+
+    // ---- Event delegation ----
+    document.addEventListener('click', function(e) {
+      var target = e.target;
+      if (target.id === 'langToggle' || target.id === 'langToggleMobile') {
+        applyLanguage(currentLang === 'es' ? 'en' : 'es');
+      }
+      if (target.id === 'menuToggle') {
+        var menu = document.getElementById('mobileMenu');
+        if (menu) {
+          var expanded = target.getAttribute('aria-expanded') === 'true';
+          target.setAttribute('aria-expanded', String(!expanded));
+          menu.classList.toggle('hidden');
+        }
+      }
+      if (target.closest && target.closest('#mobileMenu a')) {
+        var menuToggle = document.getElementById('menuToggle');
+        var mobileMenu = document.getElementById('mobileMenu');
+        if (mobileMenu) mobileMenu.classList.add('hidden');
+        if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    loadComponent('navbar-container', 'components/navbar.html');
+    loadComponent('footer-container', 'components/footer.html');
+
+    // ---- VALIDACIÓN DEL FORMULARIO ----
+    (function() {
+      var form = document.getElementById('formSolicitud');
+      var formFields = document.getElementById('formFields');
+      var successMessage = document.getElementById('successMessage');
+      var btnEnviar = document.getElementById('btnEnviar');
+
+      function mostrarError(id, mensaje) {
+        var el = document.getElementById(id + '-error');
+        if (el) {
+          el.textContent = mensaje;
+          el.classList.remove('hidden');
+        }
+      }
+
+      function ocultarError(id) {
+        var el = document.getElementById(id + '-error');
+        if (el) {
+          el.classList.add('hidden');
+        }
+      }
+
+      function marcarValido(id) {
+        var input = document.getElementById(id);
+        if (input) {
+          input.classList.remove('border-[#C60B1E]');
+          input.classList.add('border-gray-200');
+        }
+        ocultarError(id);
+      }
+
+      function marcarInvalido(id) {
+        var input = document.getElementById(id);
+        if (input) {
+          input.classList.remove('border-gray-200');
+          input.classList.add('border-[#C60B1E]');
+        }
+      }
+
+      function getMsg(key) {
+        return translations[currentLang] && translations[currentLang][key] ? translations[currentLang][key] : (translations['es'][key] || '');
+      }
+
+      // Validación en tiempo real
+      form.addEventListener('input', function(e) {
+        var target = e.target;
+        switch(target.id) {
+          case 'empresa': validarEmpresa(); break;
+          case 'contacto': validarContacto(); break;
+          case 'email': validarEmail(); break;
+          case 'telefono': validarTelefono(); break;
+          case 'sitioWeb': validarSitioWeb(); break;
+          case 'comentarios': actualizarContadorComentarios(); break;
+        }
+      });
+
+      form.addEventListener('change', function(e) {
+        var target = e.target;
+        switch(target.id) {
+          case 'pais': validarPais(); break;
+          case 'producto': validarProducto(); break;
+          case 'volumen': validarVolumen(); mostrarAdvertenciaVolumen(); break;
+        }
+        if (target.name === 'servicios') validarServicios();
+        if (target.name === 'tpl') validarTPL();
+      });
+
+      function validarEmpresa() {
+        var val = document.getElementById('empresa').value.trim();
+        if (val.length >= 2) { marcarValido('empresa'); return true; }
+        else { marcarInvalido('empresa'); mostrarError('empresa', getMsg('error.empresa')); return false; }
+      }
+
+      function validarContacto() {
+        var val = document.getElementById('contacto').value.trim();
+        var words = val.split(/\s+/).filter(function(w) { return w.length > 0; });
+        if (words.length >= 2) { marcarValido('contacto'); return true; }
+        else { marcarInvalido('contacto'); mostrarError('contacto', getMsg('error.contacto')); return false; }
+      }
+
+      function validarEmail() {
+        var val = document.getElementById('email').value.trim();
+        var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (re.test(val)) { marcarValido('email'); return true; }
+        else { marcarInvalido('email'); mostrarError('email', getMsg('error.email')); return false; }
+      }
+
+      function validarTelefono() {
+        var val = document.getElementById('telefono').value.trim();
+        if (val.startsWith('+') && val.length >= 5) { marcarValido('telefono'); return true; }
+        else { marcarInvalido('telefono'); mostrarError('telefono', getMsg('error.telefono')); return false; }
+      }
+
+      function validarSitioWeb() {
+        var val = document.getElementById('sitioWeb').value.trim();
+        if (val === '') { marcarValido('sitioWeb'); return true; }
+        var re = /^https?:\/\/.+/;
+        if (re.test(val)) { marcarValido('sitioWeb'); return true; }
+        else { marcarInvalido('sitioWeb'); mostrarError('sitioWeb', getMsg('error.sitioWeb')); return false; }
+      }
+
+      function validarPais() {
+        var val = document.getElementById('pais').value;
+        if (val !== '') { marcarValido('pais'); return true; }
+        else { marcarInvalido('pais'); mostrarError('pais', getMsg('error.pais')); return false; }
+      }
+
+      function validarProducto() {
+        var val = document.getElementById('producto').value;
+        if (val !== '') { marcarValido('producto'); return true; }
+        else { marcarInvalido('producto'); mostrarError('producto', getMsg('error.producto')); return false; }
+      }
+
+      function validarVolumen() {
+        var val = document.getElementById('volumen').value;
+        if (val !== '') { marcarValido('volumen'); return true; }
+        else { marcarInvalido('volumen'); mostrarError('volumen', getMsg('error.volumen')); return false; }
+      }
+
+      function mostrarAdvertenciaVolumen() {
+        var volumen = document.getElementById('volumen').value;
+        var producto = document.getElementById('producto').value;
+        var warning = document.getElementById('volumen-warning');
+        if (volumen === '0-100' && producto !== '') {
+          warning.classList.remove('hidden');
+        } else {
+          warning.classList.add('hidden');
+        }
+      }
+
+      function validarServicios() {
+        var checks = document.querySelectorAll('input[name="servicios"]:checked');
+        if (checks.length > 0) { ocultarError('servicios'); return true; }
+        else { mostrarError('servicios', getMsg('error.servicios')); return false; }
+      }
+
+      function validarTPL() {
+        var radios = document.querySelectorAll('input[name="tpl"]:checked');
+        if (radios.length > 0) { ocultarError('tpl'); return true; }
+        else { mostrarError('tpl', getMsg('error.tpl')); return false; }
+      }
+
+      function validarPrivacidad() {
+        var checked = document.getElementById('privacidad').checked;
+        if (checked) { ocultarError('privacidad'); return true; }
+        else { mostrarError('privacidad', getMsg('error.privacidad')); return false; }
+      }
+
+      function actualizarContadorComentarios() {
+        var ta = document.getElementById('comentarios');
+        var counter = document.getElementById('comentarios-counter');
+        var len = ta.value.length;
+        var max = 500;
+        counter.textContent = len + '/' + max;
+        if (len > max) {
+          ta.value = ta.value.substring(0, max);
+          counter.textContent = max + '/' + max;
+          mostrarError('comentarios', getMsg('error.comentarios') + (max + len - (ta.value.length)) + ')');
+        } else {
+          ocultarError('comentarios');
+        }
+      }
+
+      // Inicializar contador
+      actualizarContadorComentarios();
+
+      // Validar al hacer clic en el botón de envío
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        var valid = true;
+        valid = validarEmpresa() && valid;
+        valid = validarContacto() && valid;
+        valid = validarEmail() && valid;
+        valid = validarTelefono() && valid;
+        valid = validarSitioWeb() && valid;
+        valid = validarPais() && valid;
+        valid = validarProducto() && valid;
+        valid = validarVolumen() && valid;
+        valid = validarServicios() && valid;
+        valid = validarTPL() && valid;
+        valid = validarPrivacidad() && valid;
+
+        // Scroll al primer error
+        if (!valid) {
+          var firstError = document.querySelector('.border-\\[\\#C60B1E\\]');
+          if (firstError) {
+            firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            firstError.focus();
+          }
+          return;
+        }
+
+        // Simular envío exitoso
+        formFields.classList.add('hidden');
+        successMessage.classList.remove('hidden');
+        successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+
+      // Botón de envío se habilita/deshabilita en base a validación
+      // (lo dejamos siempre habilitado, la validación ocurre en submit)
+    })();
+  </script>
+</body>
+</html>
