@@ -695,6 +695,11 @@
         toggleMobile.textContent = lang === 'es' ? 'English' : 'Español';
         toggleMobile.setAttribute('aria-label', lang === 'es' ? 'Cambiar idioma a inglés' : 'Switch language to Spanish');
       }
+
+      // Re-validar errores visibles para traducir mensajes
+      if (window.revalidarErrores) {
+        window.revalidarErrores();
+      }
     }
 
     // ---- Corrección de enlaces en aplicacion.html (definido antes de loadComponent) ----
@@ -758,213 +763,13 @@
     loadComponent('navbar-container', 'components/navbar.html');
     loadComponent('footer-container', 'components/footer.html');
 
-    // ---- VALIDACIÓN DEL FORMULARIO ----
-    (function() {
-      var form = document.getElementById('formSolicitud');
-      var formFields = document.getElementById('formFields');
-      var successMessage = document.getElementById('successMessage');
-      var btnEnviar = document.getElementById('btnEnviar');
-
-      function mostrarError(id, mensaje) {
-        var el = document.getElementById(id + '-error');
-        if (el) {
-          el.textContent = mensaje;
-          el.classList.remove('hidden');
-        }
-      }
-
-      function ocultarError(id) {
-        var el = document.getElementById(id + '-error');
-        if (el) {
-          el.classList.add('hidden');
-        }
-      }
-
-      function marcarValido(id) {
-        var input = document.getElementById(id);
-        if (input) {
-          input.classList.remove('border-[#C60B1E]');
-          input.classList.add('border-gray-200');
-        }
-        ocultarError(id);
-      }
-
-      function marcarInvalido(id) {
-        var input = document.getElementById(id);
-        if (input) {
-          input.classList.remove('border-gray-200');
-          input.classList.add('border-[#C60B1E]');
-        }
-      }
-
-      function getMsg(key) {
-        return translations[currentLang] && translations[currentLang][key] ? translations[currentLang][key] : (translations['es'][key] || '');
-      }
-
-      // Validación en tiempo real
-      form.addEventListener('input', function(e) {
-        var target = e.target;
-        switch(target.id) {
-          case 'empresa': validarEmpresa(); break;
-          case 'contacto': validarContacto(); break;
-          case 'email': validarEmail(); break;
-          case 'telefono': validarTelefono(); break;
-          case 'sitioWeb': validarSitioWeb(); break;
-          case 'comentarios': actualizarContadorComentarios(); break;
-        }
-      });
-
-      form.addEventListener('change', function(e) {
-        var target = e.target;
-        switch(target.id) {
-          case 'pais': validarPais(); break;
-          case 'producto': validarProducto(); break;
-          case 'volumen': validarVolumen(); mostrarAdvertenciaVolumen(); break;
-        }
-        if (target.name === 'servicios') validarServicios();
-        if (target.name === 'tpl') validarTPL();
-      });
-
-      function validarEmpresa() {
-        var val = document.getElementById('empresa').value.trim();
-        if (val.length >= 2) { marcarValido('empresa'); return true; }
-        else { marcarInvalido('empresa'); mostrarError('empresa', getMsg('error.empresa')); return false; }
-      }
-
-      function validarContacto() {
-        var val = document.getElementById('contacto').value.trim();
-        var words = val.split(/\s+/).filter(function(w) { return w.length > 0; });
-        if (words.length >= 2) { marcarValido('contacto'); return true; }
-        else { marcarInvalido('contacto'); mostrarError('contacto', getMsg('error.contacto')); return false; }
-      }
-
-      function validarEmail() {
-        var val = document.getElementById('email').value.trim();
-        var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (re.test(val)) { marcarValido('email'); return true; }
-        else { marcarInvalido('email'); mostrarError('email', getMsg('error.email')); return false; }
-      }
-
-      function validarTelefono() {
-        var val = document.getElementById('telefono').value.trim();
-        if (val.startsWith('+') && val.length >= 5) { marcarValido('telefono'); return true; }
-        else { marcarInvalido('telefono'); mostrarError('telefono', getMsg('error.telefono')); return false; }
-      }
-
-      function validarSitioWeb() {
-        var val = document.getElementById('sitioWeb').value.trim();
-        if (val === '') { marcarValido('sitioWeb'); return true; }
-        var re = /^https?:\/\/.+/;
-        if (re.test(val)) { marcarValido('sitioWeb'); return true; }
-        else { marcarInvalido('sitioWeb'); mostrarError('sitioWeb', getMsg('error.sitioWeb')); return false; }
-      }
-
-      function validarPais() {
-        var val = document.getElementById('pais').value;
-        if (val !== '') { marcarValido('pais'); return true; }
-        else { marcarInvalido('pais'); mostrarError('pais', getMsg('error.pais')); return false; }
-      }
-
-      function validarProducto() {
-        var val = document.getElementById('producto').value;
-        if (val !== '') { marcarValido('producto'); return true; }
-        else { marcarInvalido('producto'); mostrarError('producto', getMsg('error.producto')); return false; }
-      }
-
-      function validarVolumen() {
-        var val = document.getElementById('volumen').value;
-        if (val !== '') { marcarValido('volumen'); return true; }
-        else { marcarInvalido('volumen'); mostrarError('volumen', getMsg('error.volumen')); return false; }
-      }
-
-      function mostrarAdvertenciaVolumen() {
-        var volumen = document.getElementById('volumen').value;
-        var producto = document.getElementById('producto').value;
-        var warning = document.getElementById('volumen-warning');
-        if (volumen === '0-100' && producto !== '') {
-          warning.classList.remove('hidden');
-        } else {
-          warning.classList.add('hidden');
-        }
-      }
-
-      function validarServicios() {
-        var checks = document.querySelectorAll('input[name="servicios"]:checked');
-        if (checks.length > 0) { ocultarError('servicios'); return true; }
-        else { mostrarError('servicios', getMsg('error.servicios')); return false; }
-      }
-
-      function validarTPL() {
-        var radios = document.querySelectorAll('input[name="tpl"]:checked');
-        if (radios.length > 0) { ocultarError('tpl'); return true; }
-        else { mostrarError('tpl', getMsg('error.tpl')); return false; }
-      }
-
-      function validarPrivacidad() {
-        var checked = document.getElementById('privacidad').checked;
-        if (checked) { ocultarError('privacidad'); return true; }
-        else { mostrarError('privacidad', getMsg('error.privacidad')); return false; }
-      }
-
-      function actualizarContadorComentarios() {
-        var ta = document.getElementById('comentarios');
-        var counter = document.getElementById('comentarios-counter');
-        var len = ta.value.length;
-        var max = 500;
-        counter.textContent = len + '/' + max;
-        if (len > max) {
-          ta.value = ta.value.substring(0, max);
-          counter.textContent = max + '/' + max;
-          mostrarError('comentarios', getMsg('error.comentarios') + (max + len - (ta.value.length)) + ')');
-        } else {
-          ocultarError('comentarios');
-        }
-      }
-
-      // Inicializar contador
-      actualizarContadorComentarios();
-
-      // Validar al hacer clic en el botón de envío
-      form.addEventListener('submit', function(e) {
-        e.preventDefault();
-
-        var valid = true;
-        valid = validarEmpresa() && valid;
-        valid = validarContacto() && valid;
-        valid = validarEmail() && valid;
-        valid = validarTelefono() && valid;
-        valid = validarSitioWeb() && valid;
-        valid = validarPais() && valid;
-        valid = validarProducto() && valid;
-        valid = validarVolumen() && valid;
-        valid = validarServicios() && valid;
-        valid = validarTPL() && valid;
-        valid = validarPrivacidad() && valid;
-
-        // Scroll al primer error
-        if (!valid) {
-          var firstError = document.querySelector('.border-\\[\\#C60B1E\\]');
-          if (firstError) {
-            firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            firstError.focus();
-          }
-          return;
-        }
-
-        // Simular envío exitoso
-        formFields.classList.add('hidden');
-        successMessage.classList.remove('hidden');
-        successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      });
-
-      // Botón de envío se habilita/deshabilita en base a validación
-      // (lo dejamos siempre habilitado, la validación ocurre en submit)
-    })();
-
     // Aplicar idioma al cargar
     window.addEventListener('load', function() {
       applyLanguage(currentLang);
     });
   </script>
+
+  <!-- Validation JS -->
+  <script src="scripts/validation.js"></script>
 </body>
 </html>
