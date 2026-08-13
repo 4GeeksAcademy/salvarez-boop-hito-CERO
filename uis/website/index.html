@@ -88,7 +88,12 @@
   <div id="about-container"></div>
 
   <!-- ============================================================ -->
-  <!-- CONTACTO + FOOTER                                            -->
+  <!-- CONTACTO (cargado desde components/contacto.html)            -->
+  <!-- ============================================================ -->
+  <div id="contacto-container"></div>
+
+  <!-- ============================================================ -->
+  <!-- FOOTER                                                       -->
   <!-- ============================================================ -->
   <div id="footer-container"></div>
 
@@ -330,9 +335,9 @@
       currentLang = savedLang;
     }
 
-    // ---- Carga de componentes ----
+    // ---- Carga de componentes (retorna Promise) ----
     function loadComponent(id, url) {
-      fetch(url)
+      return fetch(url)
         .then(function(r) { return r.text(); })
         .then(function(html) {
           document.getElementById(id).innerHTML = html;
@@ -365,14 +370,22 @@
       }
     });
 
-    loadComponent('navbar-container', 'components/navbar.html');
-    loadComponent('hero-container', 'components/hero.html');
-    loadComponent('about-container', 'components/about.html');
-    loadComponent('footer-container', 'components/footer.html');
-
-    // Aplicar idioma al cargar (después de que los componentes se inyecten)
-    window.addEventListener('load', function() {
+    // Esperar a que TODOS los componentes se inyecten, luego hacer scroll al hash
+    Promise.all([
+      loadComponent('navbar-container', 'components/navbar.html'),
+      loadComponent('hero-container', 'components/hero.html'),
+      loadComponent('about-container', 'components/about.html'),
+      loadComponent('contacto-container', 'components/contacto.html'),
+      loadComponent('footer-container', 'components/footer.html')
+    ]).then(function() {
       applyLanguage(currentLang);
+      var hash = window.location.hash;
+      if (hash) {
+        var target = document.querySelector(hash);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
     });
   </script>
 </body>

@@ -697,6 +697,19 @@
       }
     }
 
+    // ---- Corrección de enlaces en aplicacion.html (definido antes de loadComponent) ----
+    function fixNavLinks() {
+      var navLinks = document.querySelectorAll('#navbar-container a[href^="#"]');
+      for (var i = 0; i < navLinks.length; i++) {
+        var href = navLinks[i].getAttribute('href');
+        if (href === '#') {
+          navLinks[i].href = 'index.html';
+        } else {
+          navLinks[i].href = 'index.html' + href;
+        }
+      }
+    }
+
     // ---- Carga de componentes ----
     function loadComponent(id, url) {
       fetch(url)
@@ -704,6 +717,10 @@
         .then(function(html) {
           document.getElementById(id).innerHTML = html;
           applyLanguage(currentLang);
+          // Corregir enlaces del navbar inmediatamente (sin race condition)
+          if (id === 'navbar-container') {
+            fixNavLinks();
+          }
         })
         .catch(function(err) {
           console.error('Error cargando ' + url + ':', err);
